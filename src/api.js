@@ -1,6 +1,6 @@
 import axios from "axios";
 //base url
-axios.defaults.baseURL = "https://evangadi-forum-backend-wqf7.onrender.com";
+axios.defaults.baseURL = "https://evangadi-student-forum-backend.vercel.app";
 
 export async function loginUser(creds) {
   try {
