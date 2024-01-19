@@ -7,7 +7,7 @@ import "./forum.css";
 import { getQuestions, getAllUserImages } from "../../api";
 import UserProfile from "../../components/userProfile/UserProfile";
 // import { RiArrowDropDownLine } from "react-icons/ri";
-// import UserMenu from "../../components/usermenu/UserMenu";
+import UserMenu from "../../components/usermenu/UserMenu";
 // import Avatar from "react-avatar";
 function Forum() {
   const [data, setData] = useState([]);
@@ -15,7 +15,7 @@ function Forum() {
   const [comment, setComment] = useState(null);
   const [commentCount, setCommentCount] = useState({});
   const [commentToggle, setCommentToggle] = useState(false);
-  // const [userMenu, setUserMenu] = useState(false);
+  const [userMenu, setUserMenu] = useState(false);
   const { user, setUser } = useContext(AuthContext);
   const token = localStorage.getItem("token");
   const [userImage, setUserImage] = useState(null);
