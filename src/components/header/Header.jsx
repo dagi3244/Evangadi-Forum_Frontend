@@ -95,6 +95,7 @@ function Header() {
                   onMouseLeave={() => setUserMenu(false)}
                 >
                   <div className="user-profile">
+                    {/* <UserProfile userid={user?.userid} /> */}
                     {user?.imageBlob && user.imageBlob[user?.userid] ? (
                       <img
                         src={
@@ -107,7 +108,12 @@ function Header() {
                         alt="User Profile"
                       />
                     ) : (
-                      <Avatar name={user?.username} size="40" round={true} />
+                      <Avatar
+                        name={user?.username}
+                        size="40"
+                        round={true}
+                        // color={randomColor}
+                      />
                     )}
                   </div>
                   <div className="user-name">
