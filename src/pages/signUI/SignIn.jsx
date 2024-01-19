@@ -18,7 +18,7 @@ function SignIn() {
   const navigate = useNavigate();
   const from = location.state?.from || "/forum";
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     await loginUser(loginFormData)
       .then((data) => {
         setError(null);
