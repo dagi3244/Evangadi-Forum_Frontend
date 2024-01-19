@@ -1,23 +1,21 @@
 import { Link, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { AiFillLike } from "react-icons/ai";
+// import { AiFillLike } from "react-icons/ai";
 import { useContext } from "react";
 import { AuthContext } from "../../App";
 import "./forum.css";
-import { getQuestions, createQuestionLike, getAllUserImages } from "../../api";
+import { getQuestions, getAllUserImages } from "../../api";
 import UserProfile from "../../components/userProfile/UserProfile";
-// import Notification from "../../components/notification/Notification";
 // import { RiArrowDropDownLine } from "react-icons/ri";
 // import UserMenu from "../../components/usermenu/UserMenu";
 // import Avatar from "react-avatar";
 function Forum() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
-  const [like, setLike] = useState(null);
   const [comment, setComment] = useState(null);
   const [commentCount, setCommentCount] = useState({});
   const [commentToggle, setCommentToggle] = useState(false);
-  const [userMenu, setUserMenu] = useState(false);
+  // const [userMenu, setUserMenu] = useState(false);
   const { user, setUser } = useContext(AuthContext);
   const token = localStorage.getItem("token");
   const [userImage, setUserImage] = useState(null);
@@ -37,7 +35,7 @@ function Forum() {
         .catch((err) => console.log(err));
     };
     fetchData();
-  }, [token, commentCount, like]);
+  }, [token, commentCount]);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -56,14 +54,7 @@ function Forum() {
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
-  const handleLike = async (id) => {
-    try {
-      await createQuestionLike(token, id);
-      setLike(id);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+
   const handleComment = (id) => {
     setComment(id);
     comment === id ? setCommentToggle(!commentToggle) : setCommentToggle(true);
@@ -82,47 +73,6 @@ function Forum() {
               onChange={handleSearch}
             />
           </div>
-          {/* <div
-            className="user"
-            onMouseEnter={() => setUserMenu(true)}
-            onMouseLeave={() => setUserMenu(false)}
-          > */}
-          {/* <div className="user-profile">
-              {/* <UserProfile userid={user?.userid} /> */}
-          {/* {user?.imageBlob && user.imageBlob[user?.userid] ? (
-                <img
-                  src={
-                    user?.imageBlob
-                      ? `https://evangadi-student-forum-backend.vercel.app/api/all/images/${
-                          user.imageBlob[user?.userid]
-                        }`
-                      : ""
-                  }
-                  alt="User Profile"
-                />
-              ) : (
-                <Avatar
-                  name={user?.username}
-                  size="40"
-                  round={true}
-                  // color={randomColor}
-                />
-              )}
-            </div> 
-            <div className="user-name">
-              <h3>
-                {user?.username}
-                <RiArrowDropDownLine />
-              </h3>
-            </div> */}
-          {/* {userMenu && (
-              <UserMenu
-                refresh={() => {
-                  setUserImage(!userImage);
-                }}
-              />
-            )} */}
-          {/* </div> */}
         </div>
 
         <div className="forum-body">
@@ -130,7 +80,7 @@ function Forum() {
           {data.length > 0 ? (
             data?.map((data) => {
               return (
-                <div key={data.questionid} style={{ width: "100%" }}>
+                <div key={data.questionid}>
                   {data.title.toLowerCase().includes(search) && (
                     <div className="question">
                       <div className="question-header">
@@ -161,21 +111,13 @@ function Forum() {
                         <p>{data.description}</p>
                       </div>
                       <div className="question-reply">
-                        <button onClick={() => handleLike(data.questionid)}>
-                          <AiFillLike />
-                          {data.like_count > 0 && (
-                            <span style={{ margin: "0px 5px" }}>
-                              {data.like_count}
-                            </span>
-                          )}
-                        </button>
                         <button onClick={() => handleComment(data.questionid)}>
                           {data.comment_count > 0 && (
                             <span style={{ margin: "0px 5px" }}>
                               {data.comment_count}{" "}
                             </span>
                           )}
-                          comment
+                          Answer
                         </button>
                       </div>{" "}
                       {comment === data.questionid && commentToggle && (

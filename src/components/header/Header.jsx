@@ -95,12 +95,11 @@ function Header() {
                   onMouseLeave={() => setUserMenu(false)}
                 >
                   <div className="user-profile">
-                    {/* <UserProfile userid={user?.userid} /> */}
                     {user?.imageBlob && user.imageBlob[user?.userid] ? (
                       <img
                         src={
                           user?.imageBlob
-                            ? `https://evangadi-student-forum-backend.vercel.app/api/all/images/${
+                            ? `https://evangadi-forum-backend-k8wj.onrender.com/api/all/images/${
                                 user.imageBlob[user?.userid]
                               }`
                             : ""
@@ -108,12 +107,7 @@ function Header() {
                         alt="User Profile"
                       />
                     ) : (
-                      <Avatar
-                        name={user?.username}
-                        size="40"
-                        round={true}
-                        // color={randomColor}
-                      />
+                      <Avatar name={user?.username} size="40" round={true} />
                     )}
                   </div>
                   <div className="user-name">
@@ -141,7 +135,6 @@ function Header() {
                 >
                   Sign In
                 </NavLink>
-                {/* m */}
               </li>
             )}
           </ul>
