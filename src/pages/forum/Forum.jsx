@@ -6,10 +6,10 @@ import { AuthContext } from "../../App";
 import "./forum.css";
 import { getQuestions, createQuestionLike, getAllUserImages } from "../../api";
 import UserProfile from "../../components/userProfile/UserProfile";
-import Notification from "../../components/notification/Notification";
-import { RiArrowDropDownLine } from "react-icons/ri";
-import UserMenu from "../../components/usermenu/UserMenu";
-import Avatar from "react-avatar";
+// import Notification from "../../components/notification/Notification";
+// import { RiArrowDropDownLine } from "react-icons/ri";
+// import UserMenu from "../../components/usermenu/UserMenu";
+// import Avatar from "react-avatar";
 function Forum() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
