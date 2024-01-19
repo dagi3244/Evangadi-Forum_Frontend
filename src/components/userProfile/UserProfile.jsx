@@ -26,7 +26,7 @@ function UserProfile({ username, userid }) {
         <img
           src={
             user?.imageBlob
-              ? `https://evangadi-forum-backend-k8wj.onrender.com/api/all/images/${user.imageBlob[userid]}`
+              ? `https://evangadi-forum-frontend-dsg8.onrender.com/api/all/images/${user.imageBlob[userid]}`
               : ""
           }
           alt="User Profile"
