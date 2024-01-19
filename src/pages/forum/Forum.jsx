@@ -38,18 +38,18 @@ function Forum() {
   }, [token, commentCount]);
 
   useEffect(() => {
-    const fetchUserProfile = async () => {
-      try {
-        // Fetch user profile image data
-        await getAllUserImages(token).then((data) => {
-          setUser((prevUser) => ({ ...prevUser, imageBlob: data }));
-        });
-      } catch (error) {
-        console.error(`Error fetching user profile image: ${error.message}`);
-      }
-    };
+    // const fetchUserProfile = async () => {
+    //   try {
+    //     // Fetch user profile image data
+    //     await getAllUserImages(token).then((data) => {
+    //       setUser((prevUser) => ({ ...prevUser, imageBlob: data }));
+    //     });
+    //   } catch (error) {
+    //     console.error(`Error fetching user profile image: ${error.message}`);
+    //   }
+    // };
 
-    fetchUserProfile();
+    // fetchUserProfile();
   }, [token, userImage]);
   const handleSearch = (e) => {
     setSearch(e.target.value);
