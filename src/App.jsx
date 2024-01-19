@@ -5,7 +5,7 @@ import Home from "./pages/home/Home";
 import Section from "./components/section/Section";
 import SignIn from "./pages/signUI/SignIn";
 import SignUp from "./pages/signUI/SignUp";
-import Forum from "./pages/forum/Forum"
+import Forum from "./pages/forum/Forum";
 import AskQ from "./pages/askQ/AskQ";
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";

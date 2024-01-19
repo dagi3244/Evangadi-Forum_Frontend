@@ -5,7 +5,6 @@ axios.defaults.baseURL = "https://evangadi-student-forum-backend.vercel.app";
 export async function loginUser(creds) {
   try {
     const res = await axios.post("/api/users/login", creds);
-
     return res.data;
   } catch (error) {
     throw new Error(error.response.data.msg || "Login failed");
@@ -46,6 +45,7 @@ export async function getQuestions(token) {
     throw new Error(error.response.data.msg || "Question creation failed");
   }
 }
+//create answer api
 export async function createAnswer(answer, token, questionid) {
   try {
     const res = await axios.post(`/api/answers/${questionid}/create`, answer, {
@@ -111,5 +111,22 @@ export async function getAllUserImages(token) {
     return res.data;
   } catch (error) {
     throw new Error(error.response.data.msg || "Image upload failed");
+  }
+}
+//delete
+export async function createQuestionLike(token, questionid) {
+  try {
+    const res = await axios.post(
+      `/api/likes/questions/${questionid}/like`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    throw new Error(error.response.data.msg || "Question like failed");
   }
 }
